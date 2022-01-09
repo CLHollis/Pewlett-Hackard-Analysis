@@ -1,37 +1,54 @@
-<image src="images/title_on_www.saturdayeveningpost.com-2019-06-how-to-retire-.jpg" width="800" height="600">[^1]   
+<image src="images/title_on_www.saturdayeveningpost.com-2019-06-how-to-retire-.jpg" width="600" height="400">[^1]   
 
-# Pewlett-Hackard Silver Tsunami
+# Mission
+Baby boomers are retiring at Pewlett-Hackard and the company needs to help preparing for the volume of retirees (preparing retirement packages) and impact on the shift in job roles (such as new hires to replace vacant positions).  Finding out who will be retiring and how many positions will need to be filled is just the start. Building on the module code and datatables...
+   1. Find the number of retiring employees grouped by title.
+   2. List the retirees eligible to participate in a mentorship program.
 
-## Mission
-Building on the module code and datatables, determine the following:
-  1. Find the number of retiring employees grouped by title.
-  2. List the retirees eligible to participate in a mentorship program.
+# Resources
+-	Software: Visual Studio Code, 1.63.0 | pgAdmin for PostgreSQL 14
+- ERD tools: [Quick Database Diagrams](https://www.quickdatabasediagrams.com/)
+-	Data Provided [6 .csv files in Data folder](Data)
 
-## Resources
--	Software: Visual Studio Code, 1.63.0, pgAdmin for PostgreSQL 14
--	Data Sources & Postgres SQL Queries code:
-
-      | 1. Module: |  2. Challenge: |
-      |  :---  |   :---  |
-      |     - [Data > 6 .csv starter files](Data)  |        - Module +   |
-      |     - Queries > [schema.sql](Queries/queries.sql)  |     - [unique_titles.csv](unique_titles.csv)  |
-      |     - Queries > [queries.sql](Queries/schema.sql)  |     - [retiring_titles.csv](retiring_titles.csv)  |
-      | |     - [mentorship_eligibilty.csv](mentorship_eligibilty.csv) |
-      | |         - Queries > [Employee_Database_challenge.sql](Queries/Employee_Database_challenge.sql) |
-
+# MODULE Process & Results
   
-## Results
-There is a bulleted list with four major points from the two analysis deliverables. (6 pt)
+  1. Using provided [Data](Data), Create ERD using [Quick Database Diagrams](https://www.quickdatabasediagrams.com/) 
+  
+     <image src="images/EmployeeDB.png" width="400" height="500">
 
-Number of Retiring Employees by Title (retiring_titles.csv)
-<image src=".png" width="300" height="300">
+  2. Create a database: Right-click on "PostgreSQL 14" > hover over "Create" > pop-up menu: "Database" > Name it something relevant to the data it will house. 
 
-Employees Eligible for the Mentorship Program (mentorship_eligibilty.csv)
-<image src=".png" width="300" height="300"> 
+  3. Create [schema.sql](Queries/schema.sql)  to import tables into pgAdmin using PostgreSQL
 
+  4. Import data from tables: Right click on the table > Import/Export
+
+# CHALLENGE Process & Results 
+       
+[Employee_Database_challenge.sql](Queries/Employee_Database_challenge.sql)
+       
+### Mission 1: Find the number of retiring employees grouped by title.
+       
+1. Create a [Retirement Titles](retirement_titles.csv) table using the `JOIN` function that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. Use `SELECT COUNT (emp_no) FROM retirement_titles` to find total eligible retirees: 133,776.
+              
+    <image src="images/retirement_titles.png" width="600" height="450">
+      
+2. There are duplicate entries for some employees because they have switched titles over the years. Create a [Unique Titles](unique_titles.csv) table with the function `DICTINCT ON` the employee number column to remove any duplicates by keeping only the most recent title of each employee. Also, filter out the people no longer employed at Pewlett-Hackard. Use `SELECT COUNT (emp_no) FROM unique_titles` to find the total: 72,458.
+              
+    <image src="images/unique_titles.png" width="455" height="450">
+       
+3. Create a [Retiring Titles](retiring_titles.csv) table using the `COUNT` on the title column to group the retiring employees by their most recent job title.
+              
+    <image src="images/retiring_titles.png" width="400" height="400">   
+
+### Mission 2: 
+4. Create a [Mentorship Eligibilty](mentorship_eligibilty.csv) table  that lists the retirees eligible to participate in a mentorship program. To do this we must join the Employees table, Departments table, and Titles table. Use the `DISTINCT ON` function on the Employee.Employee_Number to remove duplicates. Use the `WHERE` `BETWEEN` & `AND` functions to keep only eligible retirees (DOB in 1965 & still employed). Total = 1,549 eligible mentors.
+      
+<image src="images/mentorship_eligibilty.PNG" width="650" height="635"> 
    
 ## Summary
-The summary addresses the two questions and contains two additional queries or tables that may provide more insight. (5 pt)
+Two additional questions that could help the manager prepare are:
+1. What are the total salaries of retirees so the company knows how much it can allocate to filling empty positions?
+2. Break that down by department.
   
 
 [^1]: [The Saturday Evening Post. "How to Retire" by Dan Freedman](https://www.saturdayeveningpost.com/2019/06/how-to-retire/). Accessed Jan. 8, 2022.
