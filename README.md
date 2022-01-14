@@ -48,7 +48,30 @@ Baby boomers are retiring at Pewlett-Hackard and the company needs to help prepa
 ## Summary
 Two additional questions that could help the manager prepare are:
 1. What are the total salaries of retirees so the company knows how much it can allocate to filling empty positions?
-2. Break that down by department.
+      
+      [Total Salaries Retiring](total_salaries_retiring.csv)
+   
+      $ 81,583,447.00
+   
+      <image src="images/total_salaries_retiring.PNG" width="600" height="400"> 
+         
+2. Break that down by department.  *Note: they could reallocate funds and/or create new departments too.
+      
+      [Total Salaries Retiring by Department](total_salaries_retiring_by_dept.csv)
+      
+      | Salary Total | Department Name |
+      | ---: | --- |
+      | $ 5,802,278 | Customer Service |
+      | $ 19,113,866 |	Development |
+      | $ 3,735,618	| Finance |
+      | $ 4,302,239	| Human Resources |
+      | $ 7,218,620	| Marketing |
+      | $ 15,984,009 | Production |
+      | $ 3,885,346	| Quality Management |
+      | $ 4,848,115	| Research |
+      | $ 16,693,356 | Sales |
+        
+      <image src="images/total_salaries_retiring_by_dept.PNG" width="500" height="550"> 
   
 
 [^1]: [The Saturday Evening Post. "How to Retire" by Dan Freedman](https://www.saturdayeveningpost.com/2019/06/how-to-retire/). Accessed Jan. 8, 2022.
